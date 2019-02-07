@@ -40,9 +40,10 @@ def myAdd(a, b, base=10):
         # c = carry, s = sum
         c1, s1 = kAddTbl[base][c, ai]
         c2, s2 = kAddTbl[base][s1, bi]
-        c = c2                                         # ... Calculate the carry using c1 and c2
-        r = r + s2 if bi != '0' else r + s2 + c2    # ... Add s2 to the result string
+        c = c1 if c1 != '0' else c2                                  # ... Calculate the carry using c1 and c2
+        r = s2 + r  # ... Add s2 to the result string
     # Is the answer correct
+    r = (c if c != '0' else '') + r
     return r
 
 gVbs = False
