@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-__version__ = '1.0'
+__version__ = '3.0'
 __author__ = 'koen.lippe@hva.nl'
 __opgave__ = 'w1o3.py'
 
@@ -16,27 +16,30 @@ def myNand(a, b):
         Result
             r: 0 of 1
         """
-    if a == 1 & b == 1:
-        return 0
-    else:
-        return 1
+    if a == 1:
+        if b == 1:
+            return 0
+
+    return 1
     # ... write your code and return 0 or 1
 
 
 def myAnd(a, b):
-    return myNot(myNand(a,b))
-    # ... write your code and return 0 or 1
+    return myNand(myNand(a,b), myNand(a,b))
+    # TODO: This code is not readable, I will edit this later
 
 def myOr(a, b):
-    return myNand(myNot(a), myNot(b))
-    # ... write your code and return 0 or 1
+    return myNand(myNand(a,a), myNand(b,b))
+    # TODO: This code is not readable, I will edit this later
 
 def myNor(a, b):
-    return myNot(myNand(myNot(a), myNot(b)))
-    # ... write your code and return 0 or 1
+    temp = myNand(myNand(a,a), myNand(b, b)) #acts as a OR gate
+    return myNand(temp, temp) #Acts as a NOT gate
+    # TODO: This code is not readable, I will edit this later
 
 def myXor(a, b):
     return myNand(myNand(a, myNand(a,b)), myNand(myNand(a,b), b))
+    # TODO: This code is not readable, I will edit this later
 
 def myNot(a):
     return myNand(a,a)
